@@ -111,4 +111,5 @@ class Robot : public frc::TimedRobot {
 
   private:
     bool bB = false;
+    bool aB = false;
 };
