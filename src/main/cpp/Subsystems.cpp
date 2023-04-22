@@ -225,7 +225,7 @@ void Robot::stepForward() {
         currentRightPosition = currentRightPosition + stepLength;
         r_left_pid.SetReference(currentLeftPosition, ControlType::kPosition);
         r_right_pid.SetReference(currentRightPosition, ControlType::kPosition);
-        
+        sleep(.5);
     } else {
         bB = false;
     }
@@ -247,13 +247,14 @@ void Robot::stepBackward() {
         bB = true;
         currentLeftPosition = currentLeftPosition + stepLength;
         currentRightPosition = currentRightPosition + stepLength;
-        r_left_pid.SetReference(left_hold, ControlType::kPosition);
-        r_right_pid.SetReference(right_hold, ControlType::kPosition);
+        r_left_pid.SetReference(currentLeftPosition, ControlType::kPosition);
+        r_right_pid.SetReference(currentLeftPosition, ControlType::kPosition);
+        sleep(.5);
     }
     
 }
 void Robot::counterClockwise() {
-    double twistLength = 30;
+    double twistLength = 200;
     double currentLeftPosition = r_left_encoder.GetPosition();
     double currentRightPosition = r_right_encoder.GetPosition();
 
@@ -263,12 +264,12 @@ void Robot::counterClockwise() {
         currentRightPosition = currentRightPosition - twistLength;
         r_left_pid.SetReference(currentLeftPosition, ControlType::kPosition);
         r_right_pid.SetReference(currentRightPosition, ControlType::kPosition);
-        
+        sleep(.5);
     }
 
 }
 void Robot::clockwise() {
-    double twistLength = 30;
+    double twistLength = 200;
     double currentLeftPosition = r_left_encoder.GetPosition();
     double currentRightPosition = r_right_encoder.GetPosition();
 
@@ -278,7 +279,7 @@ void Robot::clockwise() {
         currentRightPosition = currentRightPosition + twistLength;
         r_left_pid.SetReference(currentLeftPosition, ControlType::kPosition);
         r_right_pid.SetReference(currentRightPosition, ControlType::kPosition);
-        
+        sleep(.5);
     }
     
 }
