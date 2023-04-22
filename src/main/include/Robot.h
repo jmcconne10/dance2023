@@ -110,4 +110,5 @@ class Robot : public frc::TimedRobot {
   int extension_state;
 
   private:
+    bool bB = false;
 };
