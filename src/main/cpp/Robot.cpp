@@ -87,6 +87,7 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 
+  drivetrain();
   stepForward();
   stepBackward();
   counterClockwise();

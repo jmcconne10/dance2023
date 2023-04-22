@@ -238,23 +238,47 @@ void Robot::stepBackward() {
     SetReference to move the robot forward
     */
 
-   /*
-    double stepLength = 20;
+   
+    double stepLength = 4;
     double currentLeftPosition = r_left_encoder.GetPosition();
     double currentRightPosition = r_right_encoder.GetPosition();
 
-    if(r_operator.GetBButton()) {
-        bB = r_operator.GetBButton();
+    if(r_operator.GetAButton()) {
+        bB = true;
         currentLeftPosition = currentLeftPosition + stepLength;
         currentRightPosition = currentRightPosition + stepLength;
         r_left_pid.SetReference(left_hold, ControlType::kPosition);
         r_right_pid.SetReference(right_hold, ControlType::kPosition);
     }
-    */
+    
 }
 void Robot::counterClockwise() {
+    double twistLength = 30;
+    double currentLeftPosition = r_left_encoder.GetPosition();
+    double currentRightPosition = r_right_encoder.GetPosition();
+
+    if(r_operator.GetYButton()) {
+        bB = true;
+        currentLeftPosition = currentLeftPosition + twistLength;
+        currentRightPosition = currentRightPosition - twistLength;
+        r_left_pid.SetReference(currentLeftPosition, ControlType::kPosition);
+        r_right_pid.SetReference(currentRightPosition, ControlType::kPosition);
+        
+    }
 
 }
 void Robot::clockwise() {
+    double twistLength = 30;
+    double currentLeftPosition = r_left_encoder.GetPosition();
+    double currentRightPosition = r_right_encoder.GetPosition();
+
+    if(r_operator.GetXButton()) {
+        bB = true;
+        currentLeftPosition = currentLeftPosition - twistLength;
+        currentRightPosition = currentRightPosition + twistLength;
+        r_left_pid.SetReference(currentLeftPosition, ControlType::kPosition);
+        r_right_pid.SetReference(currentRightPosition, ControlType::kPosition);
+        
+    }
     
 }
