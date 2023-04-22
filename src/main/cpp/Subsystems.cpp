@@ -206,3 +206,16 @@ void Robot::grabber_close_high() {
     r_low_grabber.Set(false);
     r_high_grabber.Set(true);
 }
+
+void Robot::stepForward() {
+
+}
+void Robot::stepBackward() {
+
+}
+void Robot::counterClockwise() {
+
+}
+void Robot::clockwise() {
+    
+}

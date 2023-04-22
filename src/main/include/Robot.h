@@ -97,6 +97,10 @@ class Robot : public frc::TimedRobot {
   void grabber_open();
   void grabber_close_low();
   void grabber_close_high();
+  void stepForward();
+  void stepBackward();
+  void counterClockwise();
+  void clockwise();
   int auto_state;
   double left_hold;
   double right_hold;
