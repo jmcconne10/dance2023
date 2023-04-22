@@ -2,23 +2,6 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-
-  /*
-  This switch statement is where the actual auto runs.
-  Depending on what auto_state is, it will only run 1 of the steps.
-  Each step is under a "case" statement.
-  So only one of the sections under a case statement will be running at a time.
-  Step descriptions:
-  0 - Pull up the extension and drive back a little. If grabbing a cone, grab with high pressure.
-  1 - Raise the arm
-  2 - Move the extension out
-  3 - If placing a cone, move the arm down a little bit.
-  4 - Open the grabber
-  5 - Drive back a set amount (either onto the charge station or out of the community).
-      While this is happening, pull back the extension and lower the arm.
-  6 - If going on the charge station, run the balancing routine.
-  */
-
 #include "Robot.h"
 
 #include <fmt/core.h>
@@ -73,6 +56,7 @@ void Robot::RobotPeriodic() {
   SmartDashboard::PutNumber("Extension", r_extension_encoder.GetPosition());
   SmartDashboard::PutNumber("Gyro Angle", double(r_gyro.GetAngle()));
   SmartDashboard::PutNumber("Gyro Rate", double(r_gyro.GetRate()));
+  frc::SmartDashboard::PutBoolean("bB : ", bB);
 }
 
 //This code only runs once at the beginning of autonomous
