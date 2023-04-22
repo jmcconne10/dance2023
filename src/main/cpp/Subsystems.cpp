@@ -215,43 +215,73 @@ void Robot::stepForward() {
     */
 
    
-    double stepLength = 20;
+    double stepLength = -4.0;
     double currentLeftPosition = r_left_encoder.GetPosition();
     double currentRightPosition = r_right_encoder.GetPosition();
 
     if(r_operator.GetBButton()) {
-        bB = r_operator.GetBButton();
+        bB = true;
         currentLeftPosition = currentLeftPosition + stepLength;
         currentRightPosition = currentRightPosition + stepLength;
-        r_left_pid.SetReference(left_hold, ControlType::kPosition);
-        r_right_pid.SetReference(right_hold, ControlType::kPosition);
+        r_left_pid.SetReference(currentLeftPosition, ControlType::kPosition);
+        r_right_pid.SetReference(currentRightPosition, ControlType::kPosition);
+        
+    } else {
+        bB = false;
     }
     
 }
 void Robot::stepBackward() {
     /*
     How this should work, is that every time it runs, it will get the current position of each encoded
-    motor.  If the B button is pressed, it should add $stepLength to current position, then use 
-    SetReference to move the robot forward
+    motor.  If the A button is pressed, it should add $stepLength to current position, then use 
+    SetReference to move the robot backward
     */
 
-   /*
-    double stepLength = 20;
+   
+    double stepLength = 4.0;
     double currentLeftPosition = r_left_encoder.GetPosition();
     double currentRightPosition = r_right_encoder.GetPosition();
 
-    if(r_operator.GetBButton()) {
-        bB = r_operator.GetBButton();
+    if(r_operator.GetAButton()) {
+        aB = true;
         currentLeftPosition = currentLeftPosition + stepLength;
         currentRightPosition = currentRightPosition + stepLength;
-        r_left_pid.SetReference(left_hold, ControlType::kPosition);
-        r_right_pid.SetReference(right_hold, ControlType::kPosition);
+        r_left_pid.SetReference(currentLeftPosition, ControlType::kPosition);
+        r_right_pid.SetReference(currentLeftPosition, ControlType::kPosition);
+        
+    } else { 
+        aB = false;
     }
-    */
+    
 }
 void Robot::counterClockwise() {
+    double twistLength = 20.0;
+    double currentLeftPosition = r_left_encoder.GetPosition();
+    double currentRightPosition = r_right_encoder.GetPosition();
+
+    if(r_operator.GetYButton()) {
+        
+        currentLeftPosition = currentLeftPosition + twistLength;
+        currentRightPosition = currentRightPosition - twistLength;
+        r_left_pid.SetReference(currentLeftPosition, ControlType::kPosition);
+        r_right_pid.SetReference(currentRightPosition, ControlType::kPosition);
+        
+    }
 
 }
 void Robot::clockwise() {
+    double twistLength = 20.0;
+    double currentLeftPosition = r_left_encoder.GetPosition();
+    double currentRightPosition = r_right_encoder.GetPosition();
+
+    if(r_operator.GetXButton()) {
+        
+        currentLeftPosition = currentLeftPosition - twistLength;
+        currentRightPosition = currentRightPosition + twistLength;
+        r_left_pid.SetReference(currentLeftPosition, ControlType::kPosition);
+        r_right_pid.SetReference(currentRightPosition, ControlType::kPosition);
+        
+    }
     
 }

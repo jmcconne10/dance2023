@@ -56,7 +56,8 @@ void Robot::RobotPeriodic() {
   SmartDashboard::PutNumber("Extension", r_extension_encoder.GetPosition());
   SmartDashboard::PutNumber("Gyro Angle", double(r_gyro.GetAngle()));
   SmartDashboard::PutNumber("Gyro Rate", double(r_gyro.GetRate()));
-  frc::SmartDashboard::PutBoolean("bB : ", bB);
+  frc::SmartDashboard::PutBoolean("B button : ", bB);
+  frc::SmartDashboard::PutBoolean("A button : ", aB);
 }
 
 //This code only runs once at the beginning of autonomous
@@ -86,11 +87,8 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic() {
+
   drivetrain();
-  arm();
-  extension();
-  box();
-  grabber();
   stepForward();
   stepBackward();
   counterClockwise();
